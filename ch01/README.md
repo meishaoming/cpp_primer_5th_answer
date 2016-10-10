@@ -94,8 +94,6 @@ $ echo $?
 255
 ```
 
----
-
 ## Exercises Section 1.2
 ### Exercise 1.3: 
 
@@ -105,9 +103,13 @@ see [ex1_3.cc](./ex1_3.cc)
 ### Exercise 1.4: 
 
 Our program used the addition operator, +, to add two numbers. Write a program that uses the multiplication operator, *, to print the product instead.
+
+see [ex1_4.cc](./ex1_4.cc)
 ### Exercise 1.5: 
 
 We wrote the output in one large statement. Rewrite the program to use a separate statement to print each operand.
+
+see [ex1_5.cc](./ex1_5.cc)
 ### Exercise 1.6: 
 
 > Explain whether the following program fragment is legal. Click here to view code image
@@ -123,4 +125,22 @@ illegal. 多了两个分号。
 std::cout << "The sum of " << v1
 			<< " and " << v2			<< " is " << v1 + v2 << std::endl;
 ```
+
+---
+## Exercises Section 1.3
+### Exercise 1.7: 
+
+> Compile a program that has incorrectly nested comments.
+## Exercise 1.8: 
+> Indicate which, if any, of the following output statements are legal:
+> ```cpp
+std::cout << "/*";std::cout << "*/";std::cout << /* "*/" */;std::cout << /* "*/" /* "/*" */;
+```> After you’ve predicted what will happen, test your answers by compiling a program with each of these statements. Correct any errors you encounter.
+
+```cpp
+std::cout << "/*";std::cout << "*/";std::cout << /* "*/" */;	// illegalstd::cout << /* "*/" /* "/*" */;
+```
+
+
+
 
