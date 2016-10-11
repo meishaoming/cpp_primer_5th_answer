@@ -160,3 +160,48 @@ std::cout << "/*";std::cout << "*/";std::cout << /* "*/" */;	// illegalstd::c
 
 [ex1_11.cc](./ex1_11.cc)
 
+---
+
+## Exercises Section 1.4.2
+### Exercise 1.12: 
+
+> What does the following for loop do? What is the final valueof sum?  
+> ```cpp
+int sum = 0;for (int i = -100; i <= 100; ++i)sum += i;
+```
+
+从 -100 加到 100（包括100），最后值为0。
+### Exercise 1.13: 
+
+> Rewrite the exercises from § 1.4.1 (p. 13) using for loops.
+
+[ex1_13.cc](./ex1_13.cc)
+### Exercise 1.14: 
+
+> Compare and contrast the loops that used a for with those using a while. Are there advantages or disadvantages to using either form?
+
+for 写起来比较简洁。而且如果在 for 的括号里定义增长变量，则变量的作用域会限定在 for 语句中。
+
+本质上 while 和 for 没有优劣之分，两者可以互换。
+### Exercise 1.15: 
+
+> Write programs that contain the common errors discussed in the box on page 16. Familiarize yourself with the messages the compiler generates.
+
+---
+
+## Exercises Section 1.4.3
+### Exercise 1.16: 
+
+> Write your own version of a program that prints the sum of a set of integers read from cin.
+
+[ex1_16.cc](./ex1_16.cc)
+
+---
+
+## Exercises Section 1.4.4### Exercise 1.17: 
+> What happens in the program presented in this section if the input values are all equal? What if there are no duplicated values?### Exercise 1.18: 
+
+> Compile and run the program from this section giving it only equal values as input. Run it again giving it values in which no number is repeated.### Exercise 1.19: 
+
+Revise the program you wrote for the exercises in § 1.4.1 (p. 13) that printed a range of numbers so that it handles input in which the first number is smaller than the second.
+
