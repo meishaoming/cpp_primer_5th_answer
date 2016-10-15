@@ -199,9 +199,68 @@ for 写起来比较简洁。而且如果在 for 的括号里定义增长变量�
 ---
 
 ## Exercises Section 1.4.4### Exercise 1.17: 
-> What happens in the program presented in this section if the input values are all equal? What if there are no duplicated values?### Exercise 1.18: 
 
-> Compile and run the program from this section giving it only equal values as input. Run it again giving it values in which no number is repeated.### Exercise 1.19: 
+> What happens in the program presented in this section if the input values are all equal? What if there are no duplicated values?全相同，则打印出数值个数。
+全不同，则每个数据打印一次。
+### Exercise 1.18: 
 
-Revise the program you wrote for the exercises in § 1.4.1 (p. 13) that printed a range of numbers so that it handles input in which the first number is smaller than the second.
+> Compile and run the program from this section giving it only equal values as input. Run it again giving it values in which no number is repeated.[ex1_18.cc](./ex1_18.cc)
+### Exercise 1.19: 
+
+> Revise the program you wrote for the exercises in § 1.4.1 (p. 13) that printed a range of numbers so that it handles input in which the first number is smaller than the second.
+
+[ex1_19.cc](./ex1_19.cc)
+
+---
+
+## Exercises Section 1.5.1
+### Exercise 1.20:
+
+> http://www.informit.com/title/032174113 contains a copy of Sales_item.h in the Chapter 1 code directory. Copy that file to your working directory. Use it to write a program that reads a set of book sales transactions, writing each transaction to the standard output.
+
+[ex1_20.cc](./ex1_20.cc)
+### Exercise 1.21:
+
+> Write a program that reads two Sales_item objects that have the same ISBN and produces their sum.
+
+[ex1_21.cc](./ex1_21.cc)
+
+```
+$ ./ex1_21
+0-201-78345-X 3 20.00
+0-201-78345-X 2 25.00
+0-201-78345-X 5 110 22
+```
+### Exercise 1.22:
+
+> Write a program that reads several transactions for the same ISBN. Write the sum of all the transactions that were read.
+
+[ex1_22.cc](./ex1_22.cc)
+
+---
+
+## Exercises Section 1.5.2
+
+### Exercise 1.23: 
+
+> Write a program that reads several transactions and counts how many transactions occur for each ISBN.[ex1_23.cc](./ex1_23.cc)
+### Exercise 1.24: 
+
+> Test the previous program by giving multiple transactions representing multiple ISBNs. The records for each ISBN should be grouped together.
+
+```
+$ ./ex1_23 < data/book_sales
+0-201-70353-X : 1
+0-201-82470-1 : 1
+0-201-88954-4 : 4
+0-399-82477-1 : 2
+```
+
+---
+
+## Exercises Section 1.6### Exercise 1.25: 
+
+> Using the Sales_item.h header from the Web site, compile and execute the bookstore program presented in this section.
+
+[ex1_25.cc](./ex1_25.cc)
 
