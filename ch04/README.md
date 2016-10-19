@@ -240,22 +240,74 @@ finalgrade = ((grade > 90) ? "high pass" : (grade < 60)) ? "fail" : "pass";
 
 ## Exercises Section 4.8### Exercise 4.25: 
 
-What is the value of ~'q' << 6 on a machine with 32-bit ints and 8 bit chars, that uses Latin-1 character set in which 'q' has the bit pattern 01110001?### Exercise 4.26: 
+> What is the value of ~'q' << 6 on a machine with 32-bit ints and 8 bit chars, that uses Latin-1 character set in which 'q' has the bit pattern 01110001?`~` 的优先级较高。所以：
 
-In our grading example in this section, what would happen if we used unsigned int as the type for quiz1?### Exercise 4.27: 
+```cpp
+~'q' << 6 
+-> (~'q') << 6
+-> 10001110 << 6
+-> 10000000
+```
+### Exercise 4.26: 
 
-What is the result of each of these expressions? unsigned long ul1 = 3, ul2 = 7;(a) ul1 & ul2 (b) ul1 | ul2 (c) ul1 && ul2 (d) ul1 || ul2
+> In our grading example in this section, what would happen if we used unsigned int as the type for quiz1?会造成代码的移植性问题。`unsigned int` 在某些平台的机器上有可能是 16 位的。
+### Exercise 4.27: 
 
+> What is the result of each of these expressions? 
+> `unsigned long ul1 = 3, ul2 = 7;`
+
+```cpp
+(a) ul1 & ul2 // 3
+(b) ul1 | ul2 // 7
+(c) ul1 && ul2 // true
+(d) ul1 || ul2 // true
+```
 
 ---
 
 ## Exercises Section 4.9### Exercise 4.28: 
 
-Write a program to print the size of each of the built-intypes.### Exercise 4.29: 
+> Write a program to print the size of each of the built-in types.[ex4_28.cc](./ex4_28.cc)
+我电脑上的结果：
 
-Predict the output of the following code and explain your reasoning. Now run the program. Is the output what you expected? If not, figure out why.int x[10]; int *p = x;cout << sizeof(x)/sizeof(*x) << endl; cout << sizeof(p)/sizeof(*p) << endl;### Exercise 4.30: 
+```
+bool 1
+char 1
+short 2
+int 4
+long 8
+long long 8
+float 4
+double 8
+long double 16
+int * 8
+```
+### Exercise 4.29: 
 
-Using Table 4.12 (p. 166), parenthesize the following expressions to match the default evaluation:(a) sizeof x + y(b) sizeof p->mem[i] (c) sizeof a < b(d) sizeof f()
+> Predict the output of the following code and explain your reasoning. Now run the program. Is the output what you expected? If not, figure out why.
+
+```cppint x[10]; 
+int *p = x;cout << sizeof(x)/sizeof(*x) << endl; // 10, sizeof(x) 得到整个数组大小
+cout << sizeof(p)/sizeof(*p) << endl; //  2, sizeof(p) 得到变量p的大小
+```
+注：我的电脑是64位系统，指针占8字节，int占4字节。
+### Exercise 4.30: 
+
+> Using Table 4.12 (p. 166), parenthesize the following expressions to match the default evaluation:
+> 
+> ```cpp
+(a) sizeof x + y
+(b) sizeof p->mem[i] 
+(c) sizeof a < b(d) sizeof f()
+```
+
+这里面涉及到的运算符优先级排序是：`->` > `[]` > `()` > `sizeof` > `+` > `<`
+
+```cpp
+(a) sizeof (x) + y
+(b) sizeof (p->mem[i])
+(c) sizeof (a) < b(d) sizeof (f())
+```
 
 ---
 
