@@ -311,33 +311,114 @@ cout << sizeof(p)/sizeof(*p) << endl; //  2, sizeof(p) 得到变量p的大小
 
 ---
 
-## Exercises Section 4.10### Exercise 4.31: 
+## Exercises Section 4.10
+### Exercise 4.31: 
 
-The program in this section used the prefix increment and decrement operators. Explain why we used prefix and not postfix. What changes would have to be made to use the postfix versions? Rewrite the program using postfix operators.### Exercise 4.32: 
+> The program in this section used the prefix increment and decrement operators. Explain why we used prefix and not postfix. What changes would have to be made to use the postfix versions? Rewrite the program using postfix operators.在这里，前置、后置对结果没影响。
 
-Explain the following loop.constexpr int size = 5;int ia[size] = {1,2,3,4,5}; for (int *ptr = ia, ix = 0;ix != size && ptr != ia+size; ++ix, ++ptr) { /* ... */ }### Exercise 4.33: 
+```cpp
+#include <iostream>
+#include <vector>
 
-Using Table 4.12 (p. 166) explain what the following expression does:someValue ? ++x, ++y : --x, --y
+using namespace std;
+
+int main(int argc, char *argv[]) {
+	vector<int> ivec{1,2,3,4,5}; 
+	vector<int>::size_type cnt = ivec.size();
+	
+	for (vector<int>::size_type ix = 0; ix != ivec.size(); ix++, cnt--) {
+		ivec[ix] = cnt;
+		cout << ix << " == " << ivec[ix] << endl;
+	}
+	return 0;
+} 
+```### Exercise 4.32: 
+
+> Explain the following loop.
+
+> ```cppconstexpr int size = 5;int ia[size] = {1,2,3,4,5}; 
+for (int *ptr = ia, ix = 0; ix != size && ptr != ia+size; ++ix, ++ptr) 
+{ /* ... */ }
+```
+
+循环控制 ptr 和 ix 作了重复的事。两者选其一即可。
+### Exercise 4.33: 
+
+> Using Table 4.12 (p. 166) explain what the following expression does:
+> ```cpp
+someValue ? ++x, ++y : --x, --y
+```
+
+```cpp
+(someValue ? (++x, ++y) : --x), --y
+```
+
+逗号运算符的优先级最低。
 
 ---
 
 ## Exercises Section 4.11.1### Exercise 4.34: 
 
-Given the variable definitions in this section, explain what conversions take place in the following expressions:(a) if (fval)(b) dval = fval + ival; (c) dval + ival * cval;Remember that you may need to consider the associativity of the operators. 
+> Given the variable definitions in this section, explain what conversions take place in the following expressions:
+
+> ```cpp
+(a) if (fval)(b) dval = fval + ival; (c) dval + ival * cval;
+```
+> Remember that you may need to consider the associativity of the operators. 
+
+```cpp
+(a) if (fval)  // fval -> bool(b) dval = fval + ival; // ival -> float, float -> double
+(c) dval + ival * cval; // cval -> int, int -> double
+```
 
 ### Exercise 4.35: 
 
-Given the following definitions,char cval; int ival; unsigned int ui; float fval; double dval;
-identify the implicit type conversions, if any, taking place:(a) cval = 'a' + 3;(b) fval = ui - ival * 1.0; (c) dval = ui * fval;(d) cval = ival + fval + dval;
+> Given the following definitions,
 
+> ```cppchar cval; 
+int ival; 
+unsigned int ui; 
+float fval; 
+double dval;
+```
+identify the implicit type conversions, if any, taking place:
+```cpp(a) cval = 'a' + 3; // 'a' -> int, int -> char(b) fval = ui - ival * 1.0; // ival -> double，ui -> double, double -> float
+(c) dval = ui * fval; // ui -> float, float -> double(d) cval = ival + fval + dval; // i -> float, float -> double, double -> char
+```
 ---
 
 ## Exercises Section 4.11.3
 ### Exercise 4.36: 
 
-Assuming i is an int and d is a double write the expression i *= d so that it does integral, rather than floating-point, multiplication.### Exercise 4.37: 
+> Assuming i is an int and d is a double write the expression i *= d so that it does integral, rather than floating-point, multiplication.
+```cpp
+i *= static_cast<int>(d);
+```### Exercise 4.37: 
 
-Rewrite each of the following old-style casts to use a named cast:int i; double d; const string *ps; char *pc; void *pv;(a) pv = (void*)ps;(b) i = int(*pc);(c) pv = &d;(d) pc = (char*) pv;### Exercise 4.38: 
+> Rewrite each of the following old-style casts to use a named cast:
 
-Explain the following expression:double slope = static_cast<double>(j/i);
+> ```cppint i; 
+double d; 
+const string *ps; 
+char *pc; 
+void *pv;
+(a) pv = (void*)ps;(b) i = int(*pc);(c) pv = &d;(d) pc = (char*) pv;
+```
+```cpp
+	pv = const_cast<string *>(ps);
+	i = static_cast<int>(*pc);
+	pv = reinterpret_cast<void *> (&d);
+	pc = static_cast<char *>(pv);
+```
+
+其中 i, pv 不加命名强制类型转换的话，会自动执行隐式转换。
+### Exercise 4.38: 
+
+> Explain the following expression:
+> ```cpp
+double slope = static_cast<double>(j/i);
+```
+
+i, j 都是整型，则按整型作除运算，结果也是整型。最后把整型结果强制转换成 double 类型。
+
 
