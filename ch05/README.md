@@ -1,11 +1,20 @@
 ## Exercises Section 5.1
 ### Exercise 5.1: 
 
-> What is a null statement? When might you use a null statement?### Exercise 5.2: 
+> What is a null statement? When might you use a null statement?空语句 - 只有一个单独分号的语句
 
-> What is a block? When might you might use a block?### Exercise 5.3: 
+while/for 循环，当全部工作在条件部分完成时，会用到空语句。
+### Exercise 5.2: 
+
+> What is a block? When might you might use a block?块，把多条语句包起来作为一条语句，这条语句称为复合语句。
+
+if, whlie/for, switch 等语句时可能用到。
+
+在控制变量作用域时，也可能用到。### Exercise 5.3: 
 
 > Use the comma operator (§ 4.10, p. 157) to rewrite the while loop from § 1.4.1 (p. 11) so that it no longer requires a block. Explain whether this rewrite improves or diminishes the readability of this code.
+
+[ex5_03.cc](./ex5_03.cc)
 
 ---
 
