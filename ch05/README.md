@@ -121,20 +121,36 @@ for(int ix=0;ix!=sz;++ix,++sz)  // 循环无法结束
 
 ## Exercises Section 5.4.4### Exercise 5.18: 
 
-> Explain each of the following loops. Correct any problems you detect.(a) doint v1, v2;cout << "Please enter two numbers to sum:" ; if (cin >> v1 >> v2)cout << "Sum is: " << v1 + v2 << endl; while (cin);(b) do {// . . .} while (int ival = get_response());(c) do {int ival = get_response();  } while (ival);### Exercise 5.19: 
+> Explain each of the following loops. Correct any problems you detect.```cpp
+(a) 
+doint v1, v2;cout << "Please enter two numbers to sum:" ; 
+if (cin >> v1 >> v2)	cout << "Sum is: " << v1 + v2 << endl; 
+while (cin);
+
+// do {} while () 少了大括号(b) do {// . . .} while (int ival = get_response());// ival 的作用域在其定义之后。
+(c) do {int ival = get_response();  } while (ival);
+
+// ival 的作用域在大括号里面。
+```### Exercise 5.19: 
 
 > Write a program that uses a do while loop to repetitively request two strings from the user and report which string is less than the other.
+
+[ex5_19.cc](./ex5_19.cc)
 
 ---
 ## Exercises Section 5.5.1### Exercise 5.20: 
 
 > Write a program to read a sequence of strings from the standard input until either the same word occurs twice in succession or all the words have been read. Use a while loop to read the text one word at a time. Use the break statement to terminate the loop if a word occurs twice in succession. Print the word if it occurs twice in succession, or else print a message saying that no word was repeated.
 
+[ex5_20.cc](./ex5_20.cc)
+
 ---
 
 ## Exercises Section 5.5.2### Exercise 5.21: 
 
-> Revise the program from the exercise in § 5.5.1 (p. 191) so that it looks only for duplicated words that start with an uppercase letter.
+> Revise the program from the exercise in § 5.5.1 (p.191) so that it looks only for duplicated words that start with an uppercase letter.
+
+[ex5_21.cc](./ex5_21.cc)
 
 ---
 
@@ -142,6 +158,13 @@ for(int ix=0;ix!=sz;++ix,++sz)  // 循环无法结束
 
 > The last example in this section that jumped back to begin could be better written using a loop. Rewrite the code to eliminate the goto.
 
+
+```cpp
+int sz;
+do {
+	sz = get_size();
+} while (sz <= 0);
+```
 ---
 
 ## Exercises Section 5.6.3### Exercise 5.23: 
